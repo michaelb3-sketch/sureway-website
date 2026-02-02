@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Bars | Sureway Church</title>
+    <meta name="description" content="Ancient Wisdom. Modern Beat. Truth served straight—no chaser.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --parchment: #F5F0E6;
+            --cream: #FAF7F0;
+            --slate: #2C3E50;
+            --navy: #1A2A3A;
+            --dark: #0f1419;
+            --sage: #3A5A40;
+            --copper: #B87333;
+            --gold: #C9A227;
+            --text-primary: #2B2B2B;
+            --text-light: #e8e6e3;
+            --text-muted-dark: #8899a6;
+            --border: #2d3748;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Header - Dark variant */
+        header {
+            background-color: var(--dark);
+            border-bottom: 2px solid var(--border);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            color: var(--text-light);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            color: var(--text-muted-dark);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--gold);
+        }
+
+        /* Hero - Urban */
+        .hero {
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-label {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero .tagline {
+            font-family: var(--font-sans);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-muted-dark);
+            margin-bottom: 2rem;
+        }
+
+        .hero .tagline span {
+            color: var(--gold);
+        }
+
+        .hero-desc {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .hero-desc p {
+            color: var(--text-muted-dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero-desc p strong {
+            color: var(--text-light);
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            transition: all 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--dark);
+        }
+
+        /* Video Grid */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted-dark);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .video-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .video-card p {
+            color: var(--text-muted-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .video-card .tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-top: 1.25rem;
+        }
+
+        /* Quote callouts */
+        .video-card blockquote {
+            font-style: italic;
+            color: var(--text-light);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        /* Footer - Dark */
+        footer {
+            background-color: var(--dark);
+            color: var(--text-light);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 2px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: var(--text-muted-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--text-light);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: var(--text-muted-dark);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 2.5rem 1.5rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Sureway Church</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="ministry.html">Ministry</a>
+                <a href="sermons.html">Sermons</a>
+                <a href="biblebars.html" class="active">Bible Bars</a>
+                <a href="visit.html">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">YouTube Channel</div>
+        <h1>Bible Bars</h1>
+        <p class="tagline">Ancient Wisdom. <span>Modern Beat.</span></p>
+
+        <div class="hero-desc">
+            <p>This isn't watered-down gospel. It's truth served straight—no chaser.</p>
+            <p><strong>Lyrical. Raw. Real.</strong> Theology that hits different.</p>
+        </div>
+
+        <a href="#" class="btn btn-outline">Subscribe on YouTube →</a>
+    </section>
+
+    <main>
+        <div class="section-header">
+            <h2>Latest Drops</h2>
+            <p>Some lessons are meant to hit you in the chest.</p>
+        </div>
+
+        <div class="video-grid">
+            <article class="video-card">
+                <h3>Do Christians Really Need to Go to Church?</h3>
+                <blockquote>"I can worship God in nature."<br>"Church people are hypocrites."</blockquote>
+                <p>We've heard it all. But what does Scripture actually say about the gathered Body? Let's talk.</p>
+                <span class="tag">Community</span>
+            </article>
+
+            <article class="video-card">
+                <h3>False Christs</h3>
+                <p>Not every voice that sounds spiritual is speaking truth. How do you recognize the counterfeits? What
+                    did Jesus warn us to watch for?</p>
+                <p><strong>This one's essential.</strong></p>
+                <span class="tag">Discernment</span>
+            </article>
+
+            <article class="video-card">
+                <h3>The Affliction Advantage</h3>
+                <p>Nobody signs up for suffering. But what if your hardest season is producing something you can't see
+                    yet?</p>
+                <p>Paul called it a "light affliction." Let's unpack that.</p>
+                <span class="tag">Endurance</span>
+            </article>
+
+            <article class="video-card">
+                <h3>The Performance Trap</h3>
+                <p>Exhausted from trying to earn God's approval? There's another way. Identity isn't built on
+                    output—it's received as gift.</p>
+                <span class="tag">Identity</span>
+            </article>
+
+            <article class="video-card">
+                <h3>Kingdom Countermeasures</h3>
+                <p>The battlefield is between your ears. This series breaks down how to displace anger, fear, and
+                    bitterness with Kingdom thinking.</p>
+                <span class="tag">Spiritual Warfare</span>
+            </article>
+
+            <article class="video-card">
+                <h3>The Relational Walk</h3>
+                <p>Are you a spectator or a participant? The Christian life is not a static set of rules—it's an
+                    immersive relationship with a Living God.</p>
+                <span class="tag">Discipleship</span>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-brand">Sureway Church</div>
+        <div class="footer-tagline">Faith. Hope. Love. The sure way.</div>
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="ministry.html">Ministry & Beliefs</a>
+            <a href="sermons.html">Sermons</a>
+            <a href="biblebars.html">Bible Bars</a>
+            <a href="visit.html">Visit Us</a>
+        </div>
+        <div class="footer-copy">© 2015-2024 Sureway Church</div>
+    </footer>
+</body>
+
+</html>

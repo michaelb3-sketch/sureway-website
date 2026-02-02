@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministry & Beliefs | Sureway Church</title>
+    <meta name="description"
+        content="What we believe about God, ourselves, and one another. These are not doctrinal statements to recite. They are truths to inhabit.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        :root {
+            --parchment: #F5F0E6;
+            --cream: #FAF7F0;
+            --warm: #EDE8DC;
+            --slate: #2C3E50;
+            --navy: #1A2A3A;
+            --sage: #3A5A40;
+            --sage-hover: #2d4832;
+            --copper: #B87333;
+            --gold: #C9A227;
+            --text-primary: #2B2B2B;
+            --text-secondary: #4A4A4A;
+            --text-muted: #6B6B6B;
+            --border: #C4B69C;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--parchment);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--slate);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            color: var(--cream);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--warm);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+        }
+
+        .page-header .subtitle {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.5;
+        }
+
+        .page-header .intro {
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Pillar Section */
+        .pillar {
+            padding: 5rem 2rem;
+            max-width: 850px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pillar:last-of-type {
+            border-bottom: none;
+        }
+
+        .pillar-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 0.75rem;
+        }
+
+        .pillar h2 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .pillar .pillar-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .pillar p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            max-width: 70ch;
+        }
+
+        .pillar p.emphasis {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .pillar .contrast {
+            margin: 2rem 0;
+            padding: 1.5rem 0;
+        }
+
+        .pillar .contrast p {
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        .pillar .pullquote {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--sage);
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--gold);
+            line-height: 1.5;
+        }
+
+        /* Scripture Bar */
+        .scripture-bar {
+            background-color: var(--navy);
+            color: var(--cream);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .scripture-bar blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.35rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--slate);
+            color: var(--cream);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--cream);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+
+            .page-header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .pillar {
+                padding: 3rem 1.5rem;
+            }
+
+            .pillar h2 {
+                font-size: 1.75rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Sureway Church</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="ministry.html" class="active">Ministry</a>
+                <a href="sermons.html">Sermons</a>
+                <a href="biblebars.html">Bible Bars</a>
+                <a href="visit.html">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Ministry & Beliefs</h1>
+        <p class="subtitle">What We Believe About God, Ourselves, and One Another</p>
+        <p class="intro">These are not doctrinal statements to recite.<br>They are truths to inhabit.</p>
+    </div>
+
+    <section class="pillar">
+        <div class="pillar-label">The Foundation</div>
+        <h2>The Relational God</h2>
+        <p class="pillar-subtitle">The Theology of the Trinity</p>
+
+        <p class="emphasis">God is not a concept to be understood.<br>He is a Person—three Persons—to be known.</p>
+
+        <p>Before creation, before time, there was fellowship. The Father, Son, and Holy Spirit existed in perfect,
+            self-giving harmony. This is <em>Perichoresis</em>—mutual indwelling. Each divine Person harbors the others
+            at the center of being. No pride. No strife. Only perfect encircling love.</p>
+
+        <p>We are not made for isolation. We crave connection because we are made in the image of a Relational God. We
+            are not just subjects; we are sons and daughters invited into this pre-existing fellowship.</p>
+
+        <div class="pullquote">You cannot know your purpose if you do not know the Purpose Giver.</div>
+    </section>
+
+    <div class="scripture-bar">
+        <blockquote>"Let Us make man in Our image." — Genesis 1:26</blockquote>
+    </div>
+
+    <section class="pillar">
+        <div class="pillar-label">The Call</div>
+        <h2>The Upside-Down Kingdom</h2>
+        <p class="pillar-subtitle">Where the Last Are First</p>
+
+        <p class="emphasis">The Gospel is not self-improvement.<br>It is self-surrender.</p>
+
+        <p>In the Kingdom of God, the meek inherit the earth. Leaders wash feet. The way up is down. We lose our lives
+            to find them. This is not weakness—it is the subversive wisdom of a God who chose a cross over a crown.</p>
+
+        <div class="contrast">
+            <p>The world says: Accumulate. Protect. Climb.</p>
+            <p>Jesus says: Give. Forgive. Serve.</p>
+        </div>
+
+        <p>This is the countercultural call. It costs everything. And it is the only path to true freedom.</p>
+    </section>
+
+    <section class="pillar">
+        <div class="pillar-label">The Truth</div>
+        <h2>Identity</h2>
+        <p class="pillar-subtitle">Beloved, Not Performing</p>
+
+        <p class="emphasis">You are not what you do.<br>You are not what others say about you.<br>You are who God says
+            you are.</p>
+
+        <p>The Performance Trap tells us we must earn our worth—through achievement, approval, or moral perfection. It
+            is exhausting. And it is a lie.</p>
+
+        <p>The Gospel offers a radical alternative: you are <em>Beloved</em>. Not because of what you bring to the
+            table, but because of who invites you to sit.</p>
+
+        <div class="pullquote">Before you did anything, God called you His own. That identity does not shift with your
+            performance. It is finished.</div>
+    </section>
+
+    <section class="pillar">
+        <div class="pillar-label">The Cost</div>
+        <h2>Relationships</h2>
+        <p class="pillar-subtitle">The High Call of Love</p>
+
+        <p class="emphasis">We are commanded to love.<br>Not suggested. Commanded.</p>
+
+        <p>But real love is expensive. Forgiveness means absorbing a debt someone else owes you. Reconciliation means
+            laying down your right to be right. Peace is not the absence of conflict—it is the presence of hard-won
+            understanding.</p>
+
+        <p>We love difficult people because God loved us when we were difficult. We cannot withdraw from the world, and
+            we hold the church accountable. With the same mouth, we cannot bless God and curse people made in His image.
+        </p>
+
+        <div class="pullquote">This is the relational ethic of the Kingdom. It is not easy. But it is the sure way.
+        </div>
+    </section>
+
+    <div class="scripture-bar">
+        <blockquote>"If we ask anything according to His will, He hears us." — 1 John 5:14</blockquote>
+    </div>
+
+    <section class="pillar">
+        <div class="pillar-label">The Practice</div>
+        <h2>Prayer</h2>
+        <p class="pillar-subtitle">Communion with the Living God</p>
+
+        <p class="emphasis">Prayer is not a ritual.<br>It is a conversation with the One who made you.</p>
+
+        <p>Jesus taught us to approach the Father with reverence and intimacy. The Lord's Prayer gives us a pattern:</p>
+
+        <ul style="color: var(--text-secondary); margin: 1.5rem 0; padding-left: 1.5rem; line-height: 2;">
+            <li>Address our Heavenly Father with reverence</li>
+            <li>Praise Him and acknowledge His will being done</li>
+            <li>Make requests for need—not just your own</li>
+            <li>Ask for forgiveness (and be sure you forgive others)</li>
+            <li>Ask for God's protection from Satan</li>
+            <li>Close acknowledging His sovereignty, might, and glory</li>
+        </ul>
+
+        <p>We close saying, "In the name of Jesus. Amen." (John 14:12-14, John 16:23)</p>
+
+        <div class="pullquote">Prayer is the difference between spectating and participating in the Kingdom.</div>
+    </section>
+
+    <footer>
+        <div class="footer-brand">Sureway Church</div>
+        <div class="footer-tagline">Faith. Hope. Love. The sure way.</div>
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="ministry.html">Ministry & Beliefs</a>
+            <a href="sermons.html">Sermons</a>
+            <a href="biblebars.html">Bible Bars</a>
+            <a href="visit.html">Visit Us</a>
+        </div>
+        <div class="footer-copy">© 2015-2024 Sureway Church</div>
+    </footer>
+</body>
+
+</html>

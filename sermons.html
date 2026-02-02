@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons | Sureway Church</title>
+    <meta name="description"
+        content="We don't do milk-toast messages here. Whether you're starting out or going deep, find teaching that meets you where you are.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --parchment: #F5F0E6;
+            --cream: #FAF7F0;
+            --warm: #EDE8DC;
+            --slate: #2C3E50;
+            --navy: #1A2A3A;
+            --sage: #3A5A40;
+            --sage-hover: #2d4832;
+            --copper: #B87333;
+            --gold: #C9A227;
+            --text-primary: #2B2B2B;
+            --text-secondary: #4A4A4A;
+            --text-muted: #6B6B6B;
+            --border: #C4B69C;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--parchment);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--slate);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            color: var(--cream);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--warm);
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .subtitle {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-header .intro {
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Category Section */
+        .category {
+            margin-bottom: 4rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .category h2 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--slate);
+        }
+
+        .category .tag {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--sage);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+        }
+
+        .category>p {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        /* Topic List */
+        .topic-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .topic {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .topic:hover {
+            transform: translateX(4px);
+            box-shadow: -4px 0 0 var(--sage);
+        }
+
+        .topic h3 {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .topic p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .topic .arrow {
+            font-size: 1.5rem;
+            color: var(--copper);
+        }
+
+        /* Featured Series */
+        .featured {
+            background: var(--navy);
+            color: var(--cream);
+            padding: 4rem 3rem;
+            margin: 3rem 0;
+        }
+
+        .featured-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .featured h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .featured .series-subtitle {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .featured>p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 500px;
+        }
+
+        .counter-item {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .counter-item span:first-child {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .counter-item span:last-child {
+            color: var(--gold);
+        }
+
+        .featured .note {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            transition: all 0.2s;
+            margin-top: 1.5rem;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-gold:hover {
+            background-color: #d4ad2e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--slate);
+            color: var(--cream);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--cream);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.25rem;
+            }
+
+            main {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .featured {
+                padding: 3rem 2rem;
+            }
+
+            .counter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Sureway Church</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="ministry.html">Ministry</a>
+                <a href="sermons.html" class="active">Sermons</a>
+                <a href="biblebars.html">Bible Bars</a>
+                <a href="visit.html">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Sermons</h1>
+        <p class="subtitle">The Library</p>
+        <p class="intro">We don't do milk-toast messages here. Whether you're starting out or going deep, find teaching
+            that meets you where you are.</p>
+    </div>
+
+    <main>
+        <section class="category">
+            <div class="category-header">
+                <h2>Milk</h2>
+                <span class="tag">Foundations</span>
+            </div>
+            <p>For those new to faith or returning to the basics. These messages establish the bedrock of belief.</p>
+
+            <div class="topic-list">
+                <div class="topic">
+                    <div>
+                        <h3>Identity</h3>
+                        <p>Who does God say you are?</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="topic">
+                    <div>
+                        <h3>Forgiveness</h3>
+                        <p>The costliest gift you'll ever give.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="topic">
+                    <div>
+                        <h3>The Nature of God</h3>
+                        <p>Not the God you imagined, but the God Who Is.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="category-header">
+                <h2>Meat</h2>
+                <span class="tag">Advanced</span>
+            </div>
+            <p>For mature believers ready for deeper waters. These messages challenge assumptions and build endurance.
+            </p>
+
+            <div class="topic-list">
+                <div class="topic">
+                    <div>
+                        <h3>Spiritual Warfare</h3>
+                        <p>The battlefield is the mind.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="topic">
+                    <div>
+                        <h3>Suffering & Endurance</h3>
+                        <p>Hupomonè: staying power under pressure.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+                <div class="topic">
+                    <div>
+                        <h3>Prophecy & End Times</h3>
+                        <p>What Scripture actually says about what's coming.</p>
+                    </div>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured">
+            <div class="featured-label">Featured Series</div>
+            <h2>Countermeasures</h2>
+            <p class="series-subtitle">Transforming the Mind</p>
+
+            <p>The battle for your life is fought between your ears. This series examines the spiritual disciplines that
+                displace destructive patterns with Kingdom thinking.</p>
+
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <span>Anger</span>
+                    <span>→ Humility</span>
+                </div>
+                <div class="counter-item">
+                    <span>Fear</span>
+                    <span>→ Prayer</span>
+                </div>
+                <div class="counter-item">
+                    <span>Bitterness</span>
+                    <span>→ Forgiveness</span>
+                </div>
+                <div class="counter-item">
+                    <span>Anxiety</span>
+                    <span>→ Trust</span>
+                </div>
+            </div>
+
+            <p class="note">These are not positive affirmations. They are countermeasures for a mind at war.</p>
+
+            <a href="#" class="btn btn-gold">Explore the Series →</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-brand">Sureway Church</div>
+        <div class="footer-tagline">Faith. Hope. Love. The sure way.</div>
+        <div class="footer-nav">
+            <a href="index.html">Home</a>
+            <a href="ministry.html">Ministry & Beliefs</a>
+            <a href="sermons.html">Sermons</a>
+            <a href="biblebars.html">Bible Bars</a>
+            <a href="visit.html">Visit Us</a>
+        </div>
+        <div class="footer-copy">© 2015-2024 Sureway Church</div>
+    </footer>
+</body>
+
+</html>

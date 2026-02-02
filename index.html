@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sureway Church | Faith. Hope. Love. The sure way.</title>
+    <meta name="description"
+        content="At Sureway Church, our purpose as bondservants of Jesus Christ is to love one another, exercise moral integrity, and pursue unity in the church.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Colors */
+            --parchment: #F5F0E6;
+            --cream: #FAF7F0;
+            --warm: #EDE8DC;
+            --slate: #2C3E50;
+            --navy: #1A2A3A;
+            --sage: #3A5A40;
+            --sage-hover: #2d4832;
+            --copper: #B87333;
+            --gold: #C9A227;
+            --text-primary: #2B2B2B;
+            --text-secondary: #4A4A4A;
+            --text-muted: #6B6B6B;
+            --border: #C4B69C;
+
+            /* Typography */
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 3rem;
+            --space-xl: 5rem;
+            --space-2xl: 8rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--parchment);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--slate);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            color: var(--cream);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            background: linear-gradient(to bottom, var(--warm) 0%, var(--parchment) 100%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C4B69C' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-brand {
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: var(--space-lg);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
+            color: var(--slate);
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        .hero-tagline span {
+            display: block;
+        }
+
+        .hero-scripture {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-top: var(--space-lg);
+        }
+
+        .hero-scripture cite {
+            display: block;
+            font-style: normal;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: var(--copper);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: var(--space-2xl) var(--space-md);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-bottom: var(--space-sm);
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            font-weight: 500;
+            color: var(--slate);
+            margin-bottom: var(--space-md);
+            line-height: 1.3;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: var(--space-sm);
+            max-width: 70ch;
+        }
+
+        .section p.lead {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .section p.emphasis {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin: var(--space-md) 0;
+            line-height: 1.6;
+        }
+
+        .section p.declaration {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--sage);
+            font-weight: 500;
+            margin-top: var(--space-lg);
+        }
+
+        /* Short declaratives */
+        .short-lines {
+            margin: var(--space-md) 0;
+        }
+
+        .short-lines p {
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* ===== SCRIPTURE BAR ===== */
+        .scripture-bar {
+            background-color: var(--navy);
+            color: var(--cream);
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+        }
+
+        .scripture-bar blockquote {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.35rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background-color: var(--cream);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--slate);
+            margin-bottom: var(--space-sm);
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-details {
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .cta-details strong {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--sage);
+            color: var(--cream);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--sage-hover);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--slate);
+            color: var(--cream);
+            padding: var(--space-xl) var(--space-md);
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-nav {
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--cream);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            nav {
+                gap: 1.5rem;
+            }
+
+            nav a {
+                font-size: 0.75rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: var(--space-lg) var(--space-sm);
+            }
+
+            .hero-brand {
+                font-size: 0.8rem;
+            }
+
+            .section {
+                padding: var(--space-xl) var(--space-sm);
+            }
+
+            .section h2 {
+                font-size: 1.75rem;
+            }
+
+            .scripture-bar blockquote {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">Sureway Church</a>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Ministry</a>
+                <a href="#">Sermons</a>
+                <a href="#">Bible Bars</a>
+                <a href="#">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-brand">Sureway Church</div>
+            <h1 class="hero-tagline">
+                <span>Faith. Hope. Love.</span>
+                <span>The sure way.</span>
+            </h1>
+            <div class="hero-scripture">
+                <blockquote>"...make your call and election sure..."</blockquote>
+                <cite>— 2 Peter 1:10</cite>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-label">Who We Are</div>
+        <h2>At Sureway Church</h2>
+        <p class="lead">Our purpose as bondservants of Jesus Christ is to love one another, exercise moral integrity,
+            and pursue unity in the church—the body of Christ.</p>
+
+        <div class="short-lines">
+            <p>We are not building an institution.</p>
+            <p>We are cultivating a fellowship.</p>
+        </div>
+
+        <p>A place where ancient wisdom meets modern life. Where serious study replaces shallow comfort. Where you are
+            challenged to grow, equipped to serve, and grounded in truth.</p>
+
+        <p class="declaration">This is the sure way to paradise.</p>
+    </section>
+
+    <div class="scripture-bar">
+        <blockquote>"You cannot know your purpose if you do not know the Purpose Giver."</blockquote>
+    </div>
+
+    <section class="section">
+        <div class="section-label">Our Mission</div>
+        <h2>God-Consciousness</h2>
+        <p class="lead">We exist to help men, women, and children develop a God-consciousness that transforms how they
+            live as citizens of both heaven and earth.</p>
+
+        <div class="short-lines">
+            <p>Not religion as ritual.</p>
+            <p>Faith as relationship.</p>
+        </div>
+
+        <p>We believe the Gospel is not a set of rules to follow but a Person to know—a living God who invites us into
+            fellowship, not performance.</p>
+    </section>
+
+    <section class="cta-section">
+        <h3>Join Us</h3>
+        <div class="cta-details">
+            <strong>Sunday Worship | 1:30 PM</strong>
+            Cypress Community Center<br>
+            403 Cypress Ave, San Jose
+        </div>
+        <a href="#" class="btn btn-primary">Visit Us →</a>
+    </section>
+
+    <div class="scripture-bar">
+        <blockquote>"We are not the ones who find the treasure. We are the treasure that is found."</blockquote>
+    </div>
+
+    <footer>
+        <div class="footer-brand">Sureway Church</div>
+        <div class="footer-tagline">Faith. Hope. Love. The sure way.</div>
+        <div class="footer-nav">
+            <a href="#">Home</a>
+            <a href="#">Ministry & Beliefs</a>
+            <a href="#">Sermons</a>
+            <a href="#">Bible Bars</a>
+            <a href="#">Visit Us</a>
+        </div>
+        <div class="footer-copy">© 2015-2024 Sureway Church</div>
+    </footer>
+</body>
+
+</html>
