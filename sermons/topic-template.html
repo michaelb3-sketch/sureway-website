@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Sermons | Sureway Church</title>
+    <meta name="description" id="page-description" content="Sermon teaching from Sureway Church">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --parchment: #F5F0E6;
+            --cream: #FAF7F0;
+            --warm: #EDE8DC;
+            --slate: #2C3E50;
+            --navy: #1A2A3A;
+            --sage: #3A5A40;
+            --sage-hover: #2d4832;
+            --copper: #B87333;
+            --gold: #C9A227;
+            --text-primary: #2B2B2B;
+            --text-secondary: #4A4A4A;
+            --text-muted: #6B6B6B;
+            --border: #C4B69C;
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lora', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--parchment);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--slate);
+            border-bottom: 3px solid var(--gold);
+            padding: 1.25rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            color: var(--cream);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            font-family: var(--font-sans);
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.25rem;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            transition: all 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--warm);
+            padding: 4rem 2rem 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb a {
+            color: var(--copper);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--sage);
+        }
+
+        .breadcrumb span {
+            color: var(--text-muted);
+            margin: 0 0.5rem;
+        }
+
+        .page-header .tag {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: var(--sage);
+            color: white;
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .page-header .tag.meat {
+            background: var(--navy);
+        }
+
+        .page-header .tag.series {
+            background: var(--copper);
+        }
+
+        .page-header .tag.podcast {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.75rem;
+            color: var(--slate);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .page-header .subtitle {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .page-header .description {
+            color: var(--text-secondary);
+            max-width: 650px;
+            font-size: 1.05rem;
+        }
+
+        .sermon-count {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* Sermon List */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .sermon-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .sermon-card {
+            background: var(--cream);
+            border: 1px solid var(--border);
+            padding: 1.75rem 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .sermon-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .sermon-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+
+        .sermon-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        .sermon-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .sermon-meta .speaker {
+            color: var(--copper);
+            font-weight: 500;
+        }
+
+        .sermon-meta .date {
+            color: var(--text-muted);
+        }
+
+        .sermon-meta .part {
+            color: var(--sage);
+            font-weight: 600;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--parchment);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 0.75rem 1rem;
+        }
+
+        .play-btn {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            border-radius: 50%;
+            background: var(--sage);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .play-btn:hover {
+            background: var(--sage-hover);
+            transform: scale(1.05);
+        }
+
+        .play-btn:active {
+            transform: scale(0.95);
+        }
+
+        .play-btn svg {
+            fill: white;
+            width: 16px;
+            height: 16px;
+        }
+
+        .play-btn .pause-icon {
+            display: none;
+        }
+
+        .play-btn.playing .play-icon {
+            display: none;
+        }
+
+        .play-btn.playing .pause-icon {
+            display: block;
+        }
+
+        .player-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 0.35rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage), var(--copper));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--copper);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .progress-container:hover .progress-bar::after {
+            opacity: 1;
+        }
+
+        .time-display {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .volume-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-muted);
+            transition: fill 0.2s;
+        }
+
+        .volume-btn:hover svg {
+            fill: var(--text-primary);
+        }
+
+        .volume-slider {
+            width: 70px;
+            height: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: var(--border);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--copper);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: var(--copper);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--slate);
+            color: var(--cream);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-tagline {
+            font-family: var(--font-body);
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-nav a {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.2s;
+        }
+
+        .footer-nav a:hover {
+            color: var(--cream);
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3rem 1.5rem 2.5rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 2rem 1.25rem 4rem;
+            }
+
+            .sermon-card {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .sermon-card h3 {
+                font-size: 1.15rem;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--slate);
+                padding: 1rem 2rem 1.5rem;
+                border-bottom: 3px solid var(--gold);
+                gap: 1rem;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 1.75rem;
+            }
+
+            .sermon-card-header {
+                flex-direction: column;
+            }
+
+            .audio-player {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="../index.html" class="logo">Sureway Church</a>
+            <button class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')"
+                aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <a href="../index.html">Home</a>
+                <a href="../ministry.html">Ministry</a>
+                <a href="../sermons.html" class="active">Sermons</a>
+                <a href="../biblebars.html">Bible Bars</a>
+                <a href="../visit.html">Visit</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="page-header-inner">
+            <div class="breadcrumb">
+                <a href="../sermons.html">Sermons</a>
+                <span>›</span>
+                <span id="breadcrumb-current">Loading...</span>
+            </div>
+            <span class="tag" id="topic-tag"></span>
+            <h1 id="topic-title"></h1>
+            <p class="subtitle" id="topic-subtitle"></p>
+            <p class="description" id="topic-description"></p>
+            <p class="sermon-count" id="sermon-count"></p>
+        </div>
+    </div>
+
+    <main>
+        <div class="sermon-list" id="sermon-list">
+            <!-- Sermons populated by JavaScript -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-brand">Sureway Church</div>
+        <div class="footer-tagline">Faith. Hope. Love. The sure way.</div>
+        <div class="footer-nav">
+            <a href="../index.html">Home</a>
+            <a href="../ministry.html">Ministry & Beliefs</a>
+            <a href="../sermons.html">Sermons</a>
+            <a href="../biblebars.html">Bible Bars</a>
+            <a href="../visit.html">Visit Us</a>
+        </div>
+        <div class="footer-copy">© 2015-2026 Sureway Church</div>
+    </footer>
+
+    <script src="sermon-data.js"></script>
+    <script>
+        // Determine which topic to display from URL
+        const pageName = window.location.pathname.split('/').pop().replace('.html', '');
+
+        let data = null;
+        let tagClass = '';
+
+        // Check categories first
+        if (CATEGORIES[pageName]) {
+            data = CATEGORIES[pageName];
+            tagClass = data.level === 'meat' ? 'meat' : '';
+        }
+        // Check series
+        else if (SERIES[pageName]) {
+            data = SERIES[pageName];
+            tagClass = 'series';
+            data.tag = 'Series';
+        }
+        // Check special pages
+        else if (pageName === 'podcasts') {
+            data = PODCASTS;
+            tagClass = 'podcast';
+            data.tag = 'Podcast';
+        }
+        else if (pageName === 'guest-speakers') {
+            data = GUEST_SPEAKERS;
+            tagClass = 'series';
+            data.tag = 'Guest Speakers';
+        }
+        else if (pageName === 'more') {
+            data = ADDITIONAL;
+            tagClass = '';
+            data.tag = 'Archive';
+        }
+
+        if (data) {
+            // Set page metadata
+            document.getElementById('page-title').textContent = data.title + ' | Sermons | Sureway Church';
+            document.getElementById('page-description').setAttribute('content', data.description);
+            document.getElementById('breadcrumb-current').textContent = data.title;
+            document.getElementById('topic-tag').textContent = data.tag || 'Foundations';
+            if (tagClass) document.getElementById('topic-tag').classList.add(tagClass);
+            document.getElementById('topic-title').textContent = data.title;
+            document.getElementById('topic-subtitle').textContent = data.subtitle || '';
+            document.getElementById('topic-description').textContent = data.description;
+            document.getElementById('sermon-count').textContent = data.sermons.length + ' message' + (data.sermons.length !== 1 ? 's' : '');
+
+            // Render sermons
+            const list = document.getElementById('sermon-list');
+            data.sermons.forEach((sermon, index) => {
+                const card = document.createElement('div');
+                card.className = 'sermon-card';
+                card.innerHTML = `
+                    <div class="sermon-card-header">
+                        <h3>${sermon.title}</h3>
+                    </div>
+                    <div class="sermon-meta">
+                        <span class="speaker">${sermon.speaker || ''}</span>
+                        ${sermon.date ? `<span class="date">${formatDate(sermon.date)}</span>` : ''}
+                        ${sermon.part ? `<span class="part">Part ${sermon.part}</span>` : ''}
+                    </div>
+                    <div class="audio-player" id="player-${index}">
+                        <button class="play-btn" onclick="togglePlay(${index})" aria-label="Play">
+                            <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        <div class="player-info">
+                            <div class="progress-container" onclick="seek(event, ${index})">
+                                <div class="progress-bar" id="progress-${index}"></div>
+                            </div>
+                            <div class="time-display">
+                                <span id="current-time-${index}">0:00</span>
+                                <span id="duration-${index}">--:--</span>
+                            </div>
+                        </div>
+                        <div class="volume-control">
+                            <button class="volume-btn" onclick="toggleMute(${index})" aria-label="Mute">
+                                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                            </button>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.05" value="1" oninput="setVolume(${index}, this.value)">
+                        </div>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        // Audio management
+        const audioElements = {};
+        let currentPlaying = null;
+
+        function getAudio(index) {
+            if (!audioElements[index]) {
+                const sermon = data.sermons[index];
+                const audio = new Audio(getAudioUrl(sermon.file));
+                audio.preload = 'metadata';
+
+                audio.addEventListener('loadedmetadata', () => {
+                    document.getElementById(`duration-${index}`).textContent = formatTime(audio.duration);
+                });
+
+                audio.addEventListener('timeupdate', () => {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    document.getElementById(`progress-${index}`).style.width = progress + '%';
+                    document.getElementById(`current-time-${index}`).textContent = formatTime(audio.currentTime);
+                });
+
+                audio.addEventListener('ended', () => {
+                    const btn = document.querySelector(`#player-${index} .play-btn`);
+                    btn.classList.remove('playing');
+                    currentPlaying = null;
+                });
+
+                audioElements[index] = audio;
+            }
+            return audioElements[index];
+        }
+
+        function togglePlay(index) {
+            const audio = getAudio(index);
+            const btn = document.querySelector(`#player-${index} .play-btn`);
+
+            // Stop any other playing audio
+            if (currentPlaying !== null && currentPlaying !== index) {
+                const prevAudio = audioElements[currentPlaying];
+                if (prevAudio) {
+                    prevAudio.pause();
+                    document.querySelector(`#player-${currentPlaying} .play-btn`).classList.remove('playing');
+                }
+            }
+
+            if (audio.paused) {
+                audio.play();
+                btn.classList.add('playing');
+                currentPlaying = index;
+            } else {
+                audio.pause();
+                btn.classList.remove('playing');
+                currentPlaying = null;
+            }
+        }
+
+        function seek(event, index) {
+            const audio = getAudio(index);
+            const rect = event.currentTarget.getBoundingClientRect();
+            const percent = (event.clientX - rect.left) / rect.width;
+            if (audio.duration) {
+                audio.currentTime = percent * audio.duration;
+            }
+        }
+
+        function setVolume(index, value) {
+            const audio = getAudio(index);
+            audio.volume = parseFloat(value);
+        }
+
+        function toggleMute(index) {
+            const audio = getAudio(index);
+            audio.muted = !audio.muted;
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '--:--';
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return m + ':' + (s < 10 ? '0' : '') + s;
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+    </script>
+</body>
+
+</html>
