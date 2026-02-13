@@ -174,7 +174,7 @@
             color: var(--dark);
         }
 
-        /* Video Grid */
+        /* Video Section */
         main {
             max-width: 1100px;
             margin: 0 auto;
@@ -196,17 +196,72 @@
             color: var(--text-muted-dark);
         }
 
+        /* Featured video — full width */
+        .featured-video {
+            margin-bottom: 4rem;
+        }
+
+        .featured-video .video-embed {
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-video h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .featured-video p {
+            color: var(--text-muted-dark);
+            font-size: 1rem;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .featured-video .tag {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--copper);
+            margin-top: 1rem;
+        }
+
+        /* Responsive 16:9 embed container */
+        .video-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #000;
+        }
+
+        .video-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Video grid — 2 columns for remaining videos */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .video-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border);
-            padding: 2rem;
-            transition: transform 0.2s, border-color 0.2s;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.3s;
         }
 
         .video-card:hover {
@@ -214,11 +269,20 @@
             border-color: var(--gold);
         }
 
+        .video-card .video-embed {
+            border: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .video-card-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
         .video-card h3 {
             font-family: var(--font-display);
             font-size: 1.35rem;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             line-height: 1.3;
         }
 
@@ -239,14 +303,55 @@
             margin-top: 1.25rem;
         }
 
-        /* Quote callouts */
-        .video-card blockquote {
-            font-style: italic;
+        /* YouTube CTA banner */
+        .yt-cta {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-top: 3rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .yt-cta h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
             color: var(--text-light);
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            padding-left: 1rem;
-            border-left: 2px solid var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .yt-cta p {
+            color: var(--text-muted-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-yt {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 2px;
+            background: #c4302b;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        .btn-yt:hover {
+            background: #a82723;
+            transform: translateY(-2px);
+        }
+
+        .btn-yt svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
         }
 
         /* Footer - Dark */
@@ -256,7 +361,7 @@
             padding: 4rem 2rem;
             text-align: center;
             border-top: 2px solid var(--border);
-            margin-top: 2rem;
+            margin-top: 0;
         }
 
         .footer-brand {
@@ -311,6 +416,10 @@
             nav {
                 display: none;
             }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -339,10 +448,30 @@
             <p><strong>Lyrical. Raw. Real.</strong> Theology that hits different.</p>
         </div>
 
-        <a href="https://www.youtube.com/@BibleBars3" target="_blank" class="btn btn-outline">Subscribe on YouTube →</a>
+        <a href="https://www.youtube.com/@BibleBars3" target="_blank" rel="noopener" class="btn btn-outline">Subscribe
+            on YouTube →</a>
     </section>
 
     <main>
+        <!-- Featured Video -->
+        <div class="section-header">
+            <h2>Featured</h2>
+            <p>Start here.</p>
+        </div>
+
+        <div class="featured-video">
+            <div class="video-embed">
+                <iframe src="https://www.youtube.com/embed/BK0TEA8l47A" title="Who is Jesus? — Bible Bars"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen loading="lazy"></iframe>
+            </div>
+            <h3>Who is Jesus?</h3>
+            <p>The question that changes everything. Not a philosophy. Not a framework. A person—the most
+                consequential person who ever lived. This is the starting point.</p>
+            <span class="tag">Foundation</span>
+        </div>
+
+        <!-- More Videos -->
         <div class="section-header">
             <h2>Latest Drops</h2>
             <p>Some lessons are meant to hit you in the chest.</p>
@@ -350,50 +479,47 @@
 
         <div class="video-grid">
             <article class="video-card">
-                <h3>Do Christians Really Need to Go to Church?</h3>
-                <blockquote>"I can worship God in nature."<br>"Church people are hypocrites."</blockquote>
-                <p>We've heard it all. But what does Scripture actually say about the gathered Body? Let's talk.</p>
-                <span class="tag">Community</span>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/RnmRIWzmQco" title="Livin' Ya Best Life — Bible Bars"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="video-card-body">
+                    <h3>Livin' Ya Best Life</h3>
+                    <p>Everybody's chasing "the good life." But what if the life you're building is a house of cards?
+                        Scripture has a different blueprint—and it costs more than you think.</p>
+                    <span class="tag">Identity</span>
+                </div>
             </article>
 
             <article class="video-card">
-                <h3>False Christs</h3>
-                <p>Not every voice that sounds spiritual is speaking truth. How do you recognize the counterfeits? What
-                    did Jesus warn us to watch for?</p>
-                <p><strong>This one's essential.</strong></p>
-                <span class="tag">Discernment</span>
-            </article>
-
-            <article class="video-card">
-                <h3>The Affliction Advantage</h3>
-                <p>Nobody signs up for suffering. But what if your hardest season is producing something you can't see
-                    yet?</p>
-                <p>Paul called it a "light affliction." Let's unpack that.</p>
-                <span class="tag">Endurance</span>
-            </article>
-
-            <article class="video-card">
-                <h3>The Performance Trap</h3>
-                <p>Exhausted from trying to earn God's approval? There's another way. Identity isn't built on
-                    output—it's received as gift.</p>
-                <span class="tag">Identity</span>
-            </article>
-
-            <article class="video-card">
-                <h3>Kingdom Countermeasures</h3>
-                <p>The battlefield is between your ears. This series breaks down how to displace anger, fear, and
-                    bitterness with Kingdom thinking.</p>
-                <span class="tag">Spiritual Warfare</span>
-            </article>
-
-            <article class="video-card">
-                <h3>The Relational Walk</h3>
-                <p>Are you a spectator or a participant? The Christian life is not a static set of rules—it's an
-                    immersive relationship with a Living God.</p>
-                <span class="tag">Discipleship</span>
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/WMfcnruMbvI" title="The Plumb Line — Bible Bars"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="video-card-body">
+                    <h3>The Plumb Line</h3>
+                    <p>God doesn't grade on a curve. There's a standard—a plumb line—and everything is measured
+                        against it. Are you building straight?</p>
+                    <span class="tag">Obedience</span>
+                </div>
             </article>
         </div>
     </main>
+
+    <!-- YouTube Subscribe CTA -->
+    <section class="yt-cta">
+        <h3>More Coming Soon</h3>
+        <p>New episodes drop regularly. Subscribe so you don't miss the next one.</p>
+        <a href="https://www.youtube.com/@BibleBars3?sub_confirmation=1" target="_blank" rel="noopener" class="btn-yt">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+            Subscribe on YouTube
+        </a>
+    </section>
 
     <footer>
         <div class="footer-brand">Sureway Church</div>
@@ -405,7 +531,7 @@
             <a href="biblebars.html">Bible Bars</a>
             <a href="visit.html">Visit Us</a>
         </div>
-        <div class="footer-copy">© 2015-2024 Sureway Church</div>
+        <div class="footer-copy">© 2015-2025 Sureway Church</div>
     </footer>
 </body>
 
