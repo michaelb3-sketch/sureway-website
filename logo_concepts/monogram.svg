@@ -1,0 +1,14 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' width='200' height='240'>
+  <!-- Circle border -->
+  <circle cx='100' cy='100' r='65' fill='none' stroke='#2C3E50' stroke-width='3'/>
+  <circle cx='100' cy='100' r='58' fill='none' stroke='#C9A227' stroke-width='1'/>
+  <!-- S letterform -->
+  <path d='M80 65 Q115 55 115 80 Q115 100 85 100 Q55 100 55 120 Q55 145 90 145' fill='none' stroke='#2C3E50' stroke-width='6' stroke-linecap='round'/>
+  <!-- W overlaid -->
+  <path d='M90 70 L100 140 L110 95 L120 140 L130 70' fill='none' stroke='#C9A227' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
+  <!-- Small cross at top -->
+  <line x1='100' y1='25' x2='100' y2='38' stroke='#C9A227' stroke-width='2'/>
+  <line x1='94' y1='30' x2='106' y2='30' stroke='#C9A227' stroke-width='2'/>
+  <!-- Label -->
+  <text x='100' y='215' text-anchor='middle' font-family='Georgia, serif' font-size='13' font-weight='600' fill='#2C3E50' letter-spacing='3'>SUREWAY</text>
+</svg>

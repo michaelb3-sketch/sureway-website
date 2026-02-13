@@ -1,0 +1,19 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' width='200' height='240'>
+  <!-- Anchor ring -->
+  <circle cx='100' cy='48' r='14' fill='none' stroke='#2C3E50' stroke-width='4'/>
+  <!-- Cross/vertical shaft -->
+  <line x1='100' y1='62' x2='100' y2='170' stroke='#2C3E50' stroke-width='5' stroke-linecap='round'/>
+  <!-- Cross arm -->
+  <line x1='75' y1='85' x2='125' y2='85' stroke='#2C3E50' stroke-width='4' stroke-linecap='round'/>
+  <!-- Anchor curve arms -->
+  <path d='M100 170 Q60 170 50 140' fill='none' stroke='#2C3E50' stroke-width='5' stroke-linecap='round'/>
+  <path d='M100 170 Q140 170 150 140' fill='none' stroke='#2C3E50' stroke-width='5' stroke-linecap='round'/>
+  <!-- Gold accents - arrow tips -->
+  <path d='M45 145 L50 140 L55 148' fill='none' stroke='#C9A227' stroke-width='3' stroke-linecap='round'/>
+  <path d='M145 148 L150 140 L155 145' fill='none' stroke='#C9A227' stroke-width='3' stroke-linecap='round'/>
+  <!-- Small gold cross in the ring -->
+  <line x1='100' y1='42' x2='100' y2='54' stroke='#C9A227' stroke-width='2'/>
+  <line x1='94' y1='48' x2='106' y2='48' stroke='#C9A227' stroke-width='2'/>
+  <!-- Label -->
+  <text x='100' y='215' text-anchor='middle' font-family='Georgia, serif' font-size='13' font-weight='600' fill='#2C3E50' letter-spacing='3'>SUREWAY</text>
+</svg>
