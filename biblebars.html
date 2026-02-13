@@ -250,7 +250,7 @@
             border: 0;
         }
 
-        /* Video grid — 2 columns for remaining videos */
+        /* Video grid */
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -274,6 +274,53 @@
             border-bottom: 1px solid var(--border);
         }
 
+        /* Thumbnail-based cards (for dynamic feed) */
+        .video-card .thumb-link {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .video-card .thumb-link img {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        .video-card:hover .thumb-link img {
+            transform: scale(1.03);
+            opacity: 0.85;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .video-card:hover .play-overlay {
+            background: rgba(196, 48, 43, 0.9);
+        }
+
+        .play-overlay svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+            margin-left: 3px;
+        }
+
         .video-card-body {
             padding: 1.5rem 2rem 2rem;
         }
@@ -282,8 +329,16 @@
             font-family: var(--font-display);
             font-size: 1.35rem;
             color: var(--text-light);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             line-height: 1.3;
+        }
+
+        .video-card .video-date {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            color: var(--text-muted-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .video-card p {
@@ -301,6 +356,36 @@
             text-transform: uppercase;
             color: var(--copper);
             margin-top: 1.25rem;
+        }
+
+        /* Loading state */
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted-dark);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+        }
+
+        .loading-spinner::before {
+            content: '◉';
+            display: block;
+            font-size: 2rem;
+            animation: pulse 1.5s ease-in-out infinite;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         /* YouTube CTA banner */
@@ -433,6 +518,7 @@
                 <a href="ministry.html">Ministry</a>
                 <a href="sermons.html">Sermons</a>
                 <a href="biblebars.html" class="active">Bible Bars</a>
+                <a href="giving.html">Give</a>
                 <a href="visit.html">Visit</a>
             </nav>
         </div>
@@ -453,7 +539,7 @@
     </section>
 
     <main>
-        <!-- Featured Video -->
+        <!-- Featured Video (pinned) -->
         <div class="section-header">
             <h2>Featured</h2>
             <p>Start here.</p>
@@ -471,40 +557,14 @@
             <span class="tag">Foundation</span>
         </div>
 
-        <!-- More Videos -->
+        <!-- Dynamic Latest Videos from YouTube -->
         <div class="section-header">
             <h2>Latest Drops</h2>
-            <p>Some lessons are meant to hit you in the chest.</p>
+            <p>Pulled live from the channel. New videos appear automatically.</p>
         </div>
 
-        <div class="video-grid">
-            <article class="video-card">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/RnmRIWzmQco" title="Livin' Ya Best Life — Bible Bars"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-card-body">
-                    <h3>Livin' Ya Best Life</h3>
-                    <p>Everybody's chasing "the good life." But what if the life you're building is a house of cards?
-                        Scripture has a different blueprint—and it costs more than you think.</p>
-                    <span class="tag">Identity</span>
-                </div>
-            </article>
-
-            <article class="video-card">
-                <div class="video-embed">
-                    <iframe src="https://www.youtube.com/embed/WMfcnruMbvI" title="The Plumb Line — Bible Bars"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen loading="lazy"></iframe>
-                </div>
-                <div class="video-card-body">
-                    <h3>The Plumb Line</h3>
-                    <p>God doesn't grade on a curve. There's a standard—a plumb line—and everything is measured
-                        against it. Are you building straight?</p>
-                    <span class="tag">Obedience</span>
-                </div>
-            </article>
+        <div id="video-feed" class="video-grid">
+            <div class="loading-spinner">Loading latest videos...</div>
         </div>
     </main>
 
@@ -529,10 +589,103 @@
             <a href="ministry.html">Ministry & Beliefs</a>
             <a href="sermons.html">Sermons</a>
             <a href="biblebars.html">Bible Bars</a>
+            <a href="giving.html">Give</a>
             <a href="visit.html">Visit Us</a>
         </div>
-        <div class="footer-copy">© 2015-2025 Sureway Church</div>
+        <div class="footer-copy">&copy; 2015-2025 Sureway Church</div>
     </footer>
+
+    <script>
+        // ============================================================
+        // Dynamic YouTube Feed — pulls latest videos from RSS
+        // ============================================================
+        const CHANNEL_ID = 'UClOZUUmW3mc-9-sAFLumcIA';
+        const FEATURED_ID = 'BK0TEA8l47A'; // pinned above, skip in feed
+        const MAX_VIDEOS = 8;
+
+        // Fallback videos if feed fails
+        const FALLBACK_VIDEOS = [
+            { id: 'rcfZWXmRhGw', title: 'You have to Practice to LEVEL UP!', date: '2025-11-14' },
+            { id: 'Ss7613F0gkw', title: 'How to get Closer to God?', date: '2025-10-13' },
+            { id: 'sOZJFNl2fZI', title: "You're Not Alone", date: '2025-09-30' },
+            { id: 'kwrP37BAoJ8', title: 'God is Love', date: '2025-06-19' },
+            { id: 'SlVHezRxBXs', title: 'All Nations, Tribes and Tongues', date: '2025-04-01' },
+            { id: 'siThTrB7Hfk', title: 'Stop Comparing Yourself to Others!', date: '2025-02-03' },
+            { id: 'RnmRIWzmQco', title: "Livin' Ya Best Life", date: '2024-12-01' },
+            { id: 'WMfcnruMbvI', title: 'The Plumb Line', date: '2024-09-01' },
+        ];
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function extractVideoId(link) {
+            const match = link.match(/[?&]v=([^&]+)/);
+            return match ? match[1] : null;
+        }
+
+        function renderVideoCard(video) {
+            return `
+                <article class="video-card">
+                    <a href="https://www.youtube.com/watch?v=${video.id}" target="_blank" rel="noopener" class="thumb-link">
+                        <img src="https://i.ytimg.com/vi/${video.id}/hqdefault.jpg" alt="${video.title}" loading="lazy">
+                        <div class="play-overlay">
+                            <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+                        </div>
+                    </a>
+                    <div class="video-card-body">
+                        <h3>${video.title}</h3>
+                        <span class="video-date">${formatDate(video.date)}</span>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderVideos(videos) {
+            const container = document.getElementById('video-feed');
+            if (!videos.length) {
+                container.innerHTML = '<p style="color:var(--text-muted-dark)">No videos found. Visit the <a href="https://www.youtube.com/@BibleBars3" style="color:var(--gold)">YouTube channel</a> directly.</p>';
+                return;
+            }
+            container.innerHTML = videos.map(renderVideoCard).join('');
+        }
+
+        // Fetch from YouTube RSS via rss2json (free, no API key needed)
+        async function loadLatestVideos() {
+            try {
+                const feedUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+                const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
+
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Feed fetch failed');
+
+                const data = await response.json();
+                if (data.status !== 'ok' || !data.items) throw new Error('Bad feed data');
+
+                const videos = data.items
+                    .map(item => ({
+                        id: extractVideoId(item.link),
+                        title: item.title,
+                        date: item.pubDate
+                    }))
+                    .filter(v => v.id && v.id !== FEATURED_ID) // skip pinned featured video
+                    .slice(0, MAX_VIDEOS);
+
+                renderVideos(videos);
+            } catch (err) {
+                console.warn('YouTube feed unavailable, using fallback:', err);
+                renderVideos(FALLBACK_VIDEOS);
+            }
+        }
+
+        // Load on page ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadLatestVideos);
+        } else {
+            loadLatestVideos();
+        }
+    </script>
 </body>
 
 </html>
