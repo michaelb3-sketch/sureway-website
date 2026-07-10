@@ -165,7 +165,6 @@ const CATEGORIES = {
         description: 'Suffering is not punishment — it is preparation. These messages address pain, trials, and the endurance that faith demands.',
         sermons: [
             { title: 'A Hard Saying: Enduring Suffering', file: 'A_Hard_Saying_Enduring_Suffering_2017-02-10.mp3', speaker: 'Pastor Mike', date: '2017-02-10' },
-            { title: 'Through the Fire', file: 'Through_The_Fire.mp3', speaker: 'Pastor Mike' },
             { title: 'How do We Endure Lengthy Trials?', file: 'How_do_We_Endure_Lengthy_Trials.mp3', speaker: 'Pastor Mike' },
             { title: 'Stop Walking in Quicksand', file: 'Stop_Walking_In_Quicksand.mp3', speaker: 'Pastor Mike' },
             { title: 'Fight for Your Peace', file: 'Fight_for_Your_Peace.mp3', speaker: 'Pastor Mike' },
